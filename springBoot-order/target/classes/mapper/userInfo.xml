@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.dao.UserInfoDao">
+ <select id="find" resultType="UserInfo">
+  select * from userinfo order by userid desc
+ </select>
+ <select id="findByUsername" resultType="UserInfo">
+ select * from userinfo where username=#{username}
+ </select>
+ <select id="findList" resultType="UserInfo">
+  select * from userinfo where username=#{username} and userpass=#{userpass}
+ </select>
+ <insert id="add">
+  insert into userinfo (username,userpass,userrole,userheadimage) values (#{username},#{userpass},#{userrole},#{userheadimage})
+ </insert>
+ <update id="update">
+   update userinfo set username=#{username},userpass=#{userpass},userrole=#{userrole},userheadimage=#{userheadimage} where userid=#{userid}
+ </update>
+ <delete id="delete">
+   delete from userinfo where username=#{username}
+ </delete>
+</mapper>
